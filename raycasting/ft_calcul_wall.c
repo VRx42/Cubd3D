@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../cube3d.h"
 
 void	ft_calcul_wall(t_clc *clc, t_data *data)
 {

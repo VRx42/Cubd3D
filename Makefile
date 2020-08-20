@@ -10,11 +10,11 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = cub3d
+NAME = cube3d
 
 FLAGS = -Wall -Werror -Wextra
 
-LIBS = libmlx.a cub3dlib.a
+LIBS = libmlx.a cube3dlib.a
 
 EVENTS = event.c \
 		 ft_close_window.c \
@@ -64,10 +64,10 @@ RAYCASTING = ft_calcul_vec_dist.c \
 			 ft_raycasting.c
 
 SRCS = ft_error.c \
-	   ft_exit_cub.c \
+	   ft_exit_cube.c \
 	   ft_put_image.c
 
-CUB3D_INC = cub3d.h libft/libft.h
+CUBE3D_INC = cube3d.h libft/libft.h
 
 ALL_SRCS = $(addprefix events/,$(EVENTS)) $(addprefix init/,$(INIT)) \
 		   $(addprefix libft/,$(LIBFT)) $(addprefix parsing_data/,$(PARSING_DATA)) \
@@ -76,24 +76,24 @@ ALL_SRCS = $(addprefix events/,$(EVENTS)) $(addprefix init/,$(INIT)) \
 OBJ = $(EVENTS:.c=.o) $(INIT:.c=.o) $(LIBFT:.c=.o) $(PARSING_DATA:.c=.o) \
 		$(RAYCASTING:.c=.o) $(SRCS:.c=.o)
 .PHONY : clean fclean re all
-.SILENT : clean fclean re all cub3dlib $(NAME)
+.SILENT : clean fclean re all cube3dlib $(NAME)
 all: $(NAME)
 
-$(NAME) : cub3dlib $(ALL_SRCS) $(CUB3D_INC)
-		echo "\033[1;33mCUB3D compiling...\033[0m"
-		gcc -o cub3d cub3d.c cub3dlib.a libmlx.a -Wall -Werror -Wextra -lXext -lX11 -lm -lbsd
-		echo "\033[32mCUB3D compilation over.\033[0m"
+$(NAME) : cube3dlib $(ALL_SRCS) $(CUBE3D_INC)
+		echo "\033[1;33mCUBE3D compiling...\033[0m"
+		gcc -o cube3d cube3d.c cube3dlib.a libmlx.a -Wall -Werror -Wextra -lXext -lX11 -lm -lbsd
+		echo "\033[32mCUBE3D compilation over.\033[0m"
 
-cub3dlib :
+cube3dlib :
 	gcc $(FLAGS) -c $(ALL_SRCS) -I./
-	ar rc cub3dlib.a $(OBJ)
-	ranlib cub3dlib.a
+	ar rc cube3dlib.a $(OBJ)
+	ranlib cube3dlib.a
 	rm -f $(OBJ)
 
 clean :
-	echo "\033[1;33mCleaning CUB3D...\033[0m"
+	echo "\033[1;33mCleaning CUBE3D...\033[0m"
 	rm -f $(NAME)
-	rm -f cub3dlib.a
+	rm -f cube3dlib.a
 	echo "\033[0;35m$(NAME) executable removed.\033[0m"
 
 fclean: clean

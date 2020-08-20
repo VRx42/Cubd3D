@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../cube3d.h"
 
 void	ft_close_window(t_data *data)
 {
-	ft_exit_cub(data);
+	ft_exit_cube(data);
 }

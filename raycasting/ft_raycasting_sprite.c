@@ -9,7 +9,7 @@
 /*   Updated: 2020/08/25 12:55:30 by vronchin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "cub3d.h"
+#include "cube3d.h"
 
 static  void sort_sprite(t_data *data, t_sprite *tab_sprite)
 {

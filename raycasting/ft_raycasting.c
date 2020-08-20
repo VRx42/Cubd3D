@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../cube3d.h"
 
 static void	ft_draw_img(t_clc *clc, t_data *data, t_txt *txt, t_img *img)
 {
