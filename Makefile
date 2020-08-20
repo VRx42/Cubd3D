@@ -55,7 +55,7 @@ LIBFT =	ft_atoi.c \
 		ft_strnew.c \
 		get_next_line.c
 
-PARSING_DATA = line_to_tab.c \
+PARSING = line_to_tab.c \
 			   parsing_data.c
 
 RAYCASTING = ft_calcul_vec_dist.c \
@@ -63,18 +63,18 @@ RAYCASTING = ft_calcul_vec_dist.c \
 			 ft_raycasting_sprite.c \
 			 ft_raycasting.c
 
-SRCS = ft_error.c \
+UTILS = ft_error.c \
 	   ft_exit_cube.c \
 	   ft_put_image.c
 
 CUBE3D_INC = cube3d.h libft/libft.h
 
 ALL_SRCS = $(addprefix events/,$(EVENTS)) $(addprefix init/,$(INIT)) \
-		   $(addprefix libft/,$(LIBFT)) $(addprefix parsing_data/,$(PARSING_DATA)) \
-		   $(addprefix raycasting/,$(RAYCASTING)) $(addprefix srcs/,$(SRCS))
+		   $(addprefix libft/,$(LIBFT)) $(addprefix parsing/,$(PARSING)) \
+		   $(addprefix raycasting/,$(RAYCASTING)) $(addprefix utils/,$(UTILS))
 
-OBJ = $(EVENTS:.c=.o) $(INIT:.c=.o) $(LIBFT:.c=.o) $(PARSING_DATA:.c=.o) \
-		$(RAYCASTING:.c=.o) $(SRCS:.c=.o)
+OBJ = $(EVENTS:.c=.o) $(INIT:.c=.o) $(LIBFT:.c=.o) $(PARSING:.c=.o) \
+		$(RAYCASTING:.c=.o) $(UTILS:.c=.o)
 .PHONY : clean fclean re all
 .SILENT : clean fclean re all cube3dlib $(NAME)
 all: $(NAME)
