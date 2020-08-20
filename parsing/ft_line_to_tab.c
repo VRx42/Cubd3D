@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   line_to_tab.c                                      :+:      :+:    :+:   */
+/*   ft_line_to_tab.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vronchin <vronchin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -32,7 +32,7 @@ char *complete_line(char *str, int w)
 	return (str);
 }
 
-void		line_to_tab(char *line, t_data *data)
+void		ft_line_to_tab(char *line, t_data *data)
 {
 	int	i;
 	int	b;

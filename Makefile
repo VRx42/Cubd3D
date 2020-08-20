@@ -16,13 +16,13 @@ FLAGS = -Wall -Werror -Wextra
 
 LIBS = libmlx.a cube3dlib.a
 
-EVENTS = event.c \
+EVENTS = ft_event.c \
 		 ft_close_window.c \
-		 move_back.c \
-		 move_forward.c \
-		 move_left.c \
-		 move_right.c \
-		 turning_cam.c
+		 ft_move_back.c \
+		 ft_move_forward.c \
+		 ft_move_left.c \
+		 ft_move_right.c \
+		 ft_move_cam.c
 
 INIT = init_color.c \
 	   init_data_map.c \
@@ -55,8 +55,8 @@ LIBFT =	ft_atoi.c \
 		ft_strnew.c \
 		get_next_line.c
 
-PARSING = line_to_tab.c \
-			   parsing_data.c
+PARSING = ft_line_to_tab.c \
+			   ft_parsing_data.c
 
 RAYCASTING = ft_calcul_vec_dist.c \
 			 ft_calcul_wall.c \

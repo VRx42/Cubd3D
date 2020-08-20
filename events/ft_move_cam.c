@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move_right.c                                       :+:      :+:    :+:   */
+/*   ft_move_cam.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vronchin <vronchin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/20 18:10:11 by vronchin          #+#    #+#             */
-/*   Updated: 2020/08/20 18:10:13 by vronchin         ###   ########.fr       */
+/*   Created: 2020/08/20 18:09:16 by vronchin          #+#    #+#             */
+/*   Updated: 2020/08/20 18:09:21 by vronchin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cube3d.h"
 
-void	move_right(t_data *data)
+void	ft_move_cam(t_data *data, double speed)
 {
-	int	a;
-	int	b;
+	double	olddirx;
+	double	olddplanex;
 
-	a = (int)(data->posx + data->planex * SPW);
-	b = (int)data->posy;
-	if (data->map[a][b] == '0')
-		data->posx += data->planex * SPW;
-	a = (int)data->posx;
-	b = (int)(data->posy + data->planey * SPW);
-	if (data->map[a][b] == '0')
-		data->posy += data->planey * SPW;
+	olddirx = data->dirx;
+	data->dirx = data->dirx * cos(speed) - data->diry * sin(speed);
+	data->diry = olddirx * sin(speed) + data->diry * cos(speed);
+	olddplanex = data->planex;
+	data->planex = data->planex * cos(speed) - data->planey * sin(speed);
+	data->planey = olddplanex * sin(speed) + data->planey * cos(speed);
 }

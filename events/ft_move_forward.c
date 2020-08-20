@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   turning_cam.c                                      :+:      :+:    :+:   */
+/*   move_forward.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vronchin <vronchin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/20 18:09:16 by vronchin          #+#    #+#             */
-/*   Updated: 2020/08/20 18:09:21 by vronchin         ###   ########.fr       */
+/*   Created: 2020/08/20 18:09:55 by vronchin          #+#    #+#             */
+/*   Updated: 2020/08/20 18:09:58 by vronchin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cube3d.h"
 
-void	turning_cam(t_data *data, double speed)
+void	ft_move_forward(t_data *data)
 {
-	double	olddirx;
-	double	olddplanex;
+	int a;
+	int	b;
 
-	olddirx = data->dirx;
-	data->dirx = data->dirx * cos(speed) - data->diry * sin(speed);
-	data->diry = olddirx * sin(speed) + data->diry * cos(speed);
-	olddplanex = data->planex;
-	data->planex = data->planex * cos(speed) - data->planey * sin(speed);
-	data->planey = olddplanex * sin(speed) + data->planey * cos(speed);
+	a = (int)(data->posx + data->dirx * SPW);
+	b = (int)data->posy;
+	if (data->map[a][b] == '0')
+		data->posx += data->dirx * SPW;
+	a = (int)data->posx;
+	b = (int)(data->posy + data->diry * SPW);
+	if (data->map[a][b] == '0')
+		data->posy += data->diry * SPW;
 }

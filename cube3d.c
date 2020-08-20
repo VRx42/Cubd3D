@@ -26,13 +26,13 @@ int				main(int argc, char **argv)
 		argv[1][i - 2] != 'c' || argv[1][i - 3] != '.')
 			ft_error(&data, "Le fichier de configuration doit etre un .cub");
 		data.mlx = mlx_init();
-		parsing_data(argv[1], &data);
+		ft_parsing_data(argv[1], &data);
 		data.window = mlx_new_window(data.mlx, data.wd_w, data.wd_h, "cube3d");
 		data.img.img_ptr = mlx_new_image(data.mlx, data.wd_w, data.wd_h);
 		data.img.data = (int*)mlx_get_data_addr\
 		(data.img.img_ptr, &data.img.bpp, &data.img.size_l, &data.img.endian);
 		ft_put_image(&data);
-		mlx_hook(data.window, 2, 1L << 0, event, &data);
+		mlx_hook(data.window, 2, 1L << 0, ft_event, &data);
 		mlx_loop(data.mlx);
 		return (1);
 	}

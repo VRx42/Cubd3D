@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_data.c                                     :+:      :+:    :+:   */
+/*   ft_parsing_data.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vronchin <vronchin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -67,7 +67,7 @@ static int check_line(t_data *data, char *line)
 	return (0);
 }
 
-void		parsing_data(char *path, t_data *data)
+void		ft_parsing_data(char *path, t_data *data)
 {
 	int			fd;
 	char		*line;
@@ -90,7 +90,7 @@ void		parsing_data(char *path, t_data *data)
 		tab = ft_strjoinplus(tab, check_line_tab(data, line), 3);
 	tab = ft_strjoinplus(tab, check_line_tab(data, line), 3);
 	close(fd);
-	line_to_tab(tab, data);
+	ft_line_to_tab(tab, data);
 	init_data_map(data);
 	init_sprite(data);
 }

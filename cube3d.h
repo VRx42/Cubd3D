@@ -115,13 +115,13 @@ typedef struct		s_data
 	t_alltxt		list;
 }					t_data;
 
-int		event(int keycode, t_data *data);
+int		ft_event(int keycode, t_data *data);
 void	ft_close_window(t_data *data);
-void	move_forward(t_data *data);
-void	move_back(t_data *data);
-void	move_right(t_data *data);
-void	move_left(t_data *data);
-void	turning_cam(t_data *data, double speed);
+void	ft_move_forward(t_data *data);
+void	ft_move_back(t_data *data);
+void	ft_move_right(t_data *data);
+void	ft_move_left(t_data *data);
+void	ft_move_cam(t_data *data, double speed);
 
 int	    init_color(t_data *data, char *line);
 void	init_data_map(t_data *data);
@@ -131,8 +131,8 @@ void	init_sprite(t_data *data);
 void    init_texture(t_data *data, t_txt *txt, char *line);
 void    init_to_default(t_data *data);
 
-void	line_to_tab(char *line, t_data *data);
-void	parsing_data(char *path, t_data *data);
+void	ft_line_to_tab(char *line, t_data *data);
+void	ft_parsing_data(char *path, t_data *data);
 
 void	ft_calcul_vec_dist(t_clc *clc, t_data *data);
 void	ft_calcul_wall(t_clc *clc, t_data *data);
