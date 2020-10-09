@@ -30,7 +30,7 @@ INIT = init_color.c \
 	   init_resolution.c \
 	   init_sprite.c \
 	   init_texture.c \
-	   init_to_default.c
+	   init_var_default.c
 	   
 LIBFT =	ft_atoi.c \
 		ft_bzero.c \

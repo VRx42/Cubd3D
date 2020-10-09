@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_to_default.c                                  :+:      :+:    :+:   */
+/*   init_var_default.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vronchin <vronchin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 #include "../cube3d.h"
 
-static void texture_to_default(t_alltxt *lst)
+static void init_texture_default(t_alltxt *lst)
 {
     lst->south.id = NULL;
     lst->south.data = NULL;
@@ -30,12 +30,14 @@ static void texture_to_default(t_alltxt *lst)
     lst->west.data = NULL;
     lst->west.width = 0;
     lst->west.height = 0;
+    lst->sprite.id = NULL;
     lst->sprite.data = NULL;
     lst->sprite.width = 0;
     lst->sprite.height = 0;
+
 }
 
-void    init_to_default(t_data *data)
+void    init_var_default(t_data *data)
 {
     data->window = NULL;
     data->map = NULL;
@@ -54,5 +56,5 @@ void    init_to_default(t_data *data)
 	data->wd_w = 0;
     data->list.floor = -1;
     data->list.ceiling = -1;
-    texture_to_default(&data->list);
+    init_texture_default(&data->list);
 }

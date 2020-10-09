@@ -12,19 +12,27 @@
 
 #include "cube3d.h"
 
+void	ft_is_dot_cub(char *config_name, t_data *data)
+{
+	int		i;
+
+	i = ft_strlen(config_name) - 1;
+	if (ft_strlen(config_name) < 5 || \
+		config_name[i] != 'b' || config_name[i - 1] != 'u' || \
+		config_name[i - 2] != 'c' || config_name[i - 3] != '.')
+		{
+			ft_display_error(data, "Le fichier de configuration doit etre un .cub !!");
+		}
+}
+
 int				main(int argc, char **argv)
 {
 	t_data	data;
-	int		i;
 
-	i = ft_strlen(argv[1]) - 1;
 	if (argc == 2)
 	{
-		init_to_default(&data);
-		if (ft_strlen(argv[1]) < 5 || \
-		argv[1][i] != 'b' || argv[1][i - 1] != 'u' || \
-		argv[1][i - 2] != 'c' || argv[1][i - 3] != '.')
-			ft_display_error(&data, "Le fichier de configuration doit etre un .cub sinon ca mar c");
+		init_var_default(&data);
+		ft_is_dot_cub(argv[1], &data);
 		data.mlx = mlx_init();
 		ft_parsing_data(argv[1], &data);
 		data.window = mlx_new_window(data.mlx, data.wd_w, data.wd_h, "cube3d");
@@ -36,5 +44,5 @@ int				main(int argc, char **argv)
 		mlx_loop(data.mlx);
 		return (1);
 	}
-	write(2, "No configuration file\n", 23);
+	write(2, "No config file ?!\n", 23);
 }

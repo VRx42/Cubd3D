@@ -114,7 +114,7 @@ typedef struct		s_data
 	t_img			img;
 	t_alltxt		list;
 }					t_data;
-
+void	ft_is_dot_cub(char *config_name, t_data *data);
 int		ft_event(int keycode, t_data *data);
 void	ft_close_window(t_data *data);
 void	ft_move_forward(t_data *data);
@@ -129,7 +129,7 @@ void    init_position(char p, int x, int y, t_data *data);
 void	init_resolution(t_data *data, char *line);
 void	init_sprite(t_data *data);
 void    init_texture(t_data *data, t_txt *txt, char *line);
-void    init_to_default(t_data *data);
+void    init_var_default(t_data *data);
 
 void	ft_line_to_tab(char *line, t_data *data);
 void	ft_parsing_data(char *path, t_data *data);
