@@ -23,7 +23,7 @@ void    init_texture(t_data *data, t_txt *txt, char *line)
     &txt->height, &txt->width)))
     {
         ft_strdel(&line);
-        ft_error(data, "Wrong path for texture");
+        ft_display_error(data, "Texture path wrong!");
     }
 	txt->data = (int*)mlx_get_data_addr(txt->id, &txt->bpp, \
     &txt->size_l, &txt->endian);

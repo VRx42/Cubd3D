@@ -140,7 +140,7 @@ void    ft_raycasting_sprite(t_data *data, t_sprite *tab_sprite, t_txt txtsp,
 double *zbuffer);
 void	ft_raycasting(t_data *data, t_alltxt *list, double *zbuffer);
 
-void    ft_error(t_data *data, char *s);
+void    ft_display_error(t_data *data, char *s);
 void	ft_exit_cube(t_data *data);
 void	ft_put_image(t_data *data);
 #endif

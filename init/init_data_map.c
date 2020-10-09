@@ -27,17 +27,17 @@ void	init_data_map(t_data *data)
 			data->map[y][x] != '1' && data->map[y][x] != '2' &&\
 			data->map[y][x] != 'N' && data->map[y][x] != 'S' &&\
 			data->map[y][x] != 'E' && data->map[y][x] != 'W')
-				ft_error(data, "Wrong caracter in map");
+				ft_display_error(data, "Wrong character somewhere!");
 			if (data->map[y][x] == '2')
 				data->nbsprite += 1;
 			if ((data->map[y][x] != ' ' && data->map[y][x] != '1')\
 			&& (y == 0 || y == data->map_h \
 			|| x == 0 || x == data->map_w))
-				ft_error(data, "Map not closed");
+				ft_display_error(data, "CLose the map!");
 			if (data->map[y][x] == ' ' && (data->map[y][x + 1] != ' ' ||\
 			data->map[y][x + 1] != '1' || data->map[y + 1][x] != ' ' || \
 			data->map[y + 1][x] != '1'))
-				ft_error(data, "Map not closed");
+				ft_display_error(data, "CLose the map!");
 			if (data->map[y][x] == 'N' || data->map[y][x] == 'S' ||\
 			data->map[y][x] == 'E' || data->map[y][x] == 'W')
 			{
@@ -50,5 +50,5 @@ void	init_data_map(t_data *data)
 		y++;
 	}
 	if (data->posx == 0)
-		ft_error(data, "Position missing");
+		ft_display_error(data, "Position missing");
 }

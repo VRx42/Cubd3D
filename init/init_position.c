@@ -15,10 +15,10 @@
 void    init_position(char p, int x, int y, t_data *data)
 {
 	if (data->posx != 0 || data->posy != 0)
-		ft_error(data, "Position already set");
+		ft_display_error(data, "Position already set");
     if (x == 0 || y == 0 || x == data->map_w \
 	|| y == data->map_h)
-		ft_error(data, "Imposible to start at this position");
+		ft_display_error(data, "Imposible to start at this position");
 	data->posx = x + 0.5;
 	data->posy = y + 0.5;
 	if (p == 'S')
@@ -42,5 +42,5 @@ void    init_position(char p, int x, int y, t_data *data)
 		data->planex = -0.66;
 	}
 	else
-		ft_error(data, "None authorized caracter");
+		ft_display_error(data, "None authorized caracter");
 }

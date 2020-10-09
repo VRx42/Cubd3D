@@ -63,7 +63,7 @@ RAYCASTING = ft_calcul_vec_dist.c \
 			 ft_raycasting_sprite.c \
 			 ft_raycasting.c
 
-UTILS = ft_error.c \
+UTILS = ft_display_error.c \
 	   ft_exit_cube.c \
 	   ft_put_image.c
 

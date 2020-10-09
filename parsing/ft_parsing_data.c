@@ -23,7 +23,7 @@ static	char *check_line_tab(t_data *data, char *line)
 		if (line[i] == '|')
 		{
 			ft_strdel(&line);
-			ft_error(data, "Map is not correct");
+			ft_display_error(data, "Map is not correct");
 		}
 		i++;
 	}
@@ -40,7 +40,7 @@ static void info_exist(t_data *data, char *line, int ret)
 	|| !data->list.sprite.id || data->list.ceiling == -1 || !line || !ret)
 	{
 		ft_strdel(&line);
-		ft_error(data, "Missing params in configuration file");
+		ft_display_error(data, "Missing params in configuration file");
 	}
 }
 
@@ -77,7 +77,7 @@ void		ft_parsing_data(char *path, t_data *data)
 	tab = NULL;
 	line = NULL;
 	if ((fd = open(path, O_RDONLY)) == -1)
-		ft_error(data, "Configuration file does not exist");
+		ft_display_error(data, "No config file found!");
 	while ((ret = get_next_line(fd, &line)))
 	{
 		if (check_line(data, line))

@@ -20,7 +20,7 @@ static void correct_wd_size(t_data *data, char *line)
     if (!data->wd_h || !data->wd_w)
     {
         ft_strdel(&line);
-        ft_error(data, "Params for resolution can't be 0");
+        ft_display_error(data, "Params for resolution can't be 0");
     }
     mlx_get_screen_size(data->mlx, &sizex, &sizey);
     if (data->wd_w > sizex || data->wd_h > sizey)
@@ -40,7 +40,7 @@ void   init_resolution(t_data *data, char *line)
         if (!ft_isdigit(line[i]) && line[i] != ' ')
         {
             ft_strdel(&line);
-            ft_error(data, "Params wrong for resolution");
+            ft_display_error(data, "Params wrong for resolution");
         }
         i++;
     }
@@ -58,7 +58,7 @@ void   init_resolution(t_data *data, char *line)
     if (line[i])
     {
         ft_strdel(&line);
-        ft_error(data, "Params wrong for resolution");
+        ft_display_error(data, "Params wrong for resolution");
     }
     correct_wd_size(data, line); 
 }

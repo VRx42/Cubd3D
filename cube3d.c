@@ -24,7 +24,7 @@ int				main(int argc, char **argv)
 		if (ft_strlen(argv[1]) < 5 || \
 		argv[1][i] != 'b' || argv[1][i - 1] != 'u' || \
 		argv[1][i - 2] != 'c' || argv[1][i - 3] != '.')
-			ft_error(&data, "Le fichier de configuration doit etre un .cub");
+			ft_display_error(&data, "Le fichier de configuration doit etre un .cub sinon ca mar c");
 		data.mlx = mlx_init();
 		ft_parsing_data(argv[1], &data);
 		data.window = mlx_new_window(data.mlx, data.wd_w, data.wd_h, "cube3d");
