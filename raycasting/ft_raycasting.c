@@ -27,7 +27,7 @@ static void	ft_draw_img(t_clc *clc, t_data *data, t_txt *txt, t_img *img)
 	while (y < data->wd_h)
 	{
 		if (y < drawst)
-			img->data[y * data->wd_w + clc->x] = 16747640;
+			img->data[y * data->wd_w + clc->x] = 16778900;
 		if (y >= drawst && y < drawend)
 		{
 			yt = (y * 2 - data->wd_h + clc->hline) * (txt->height / 2) \

@@ -89,6 +89,7 @@ void		ft_parsing_data(char *path, t_data *data)
 	while (get_next_line(fd, &line))
 		tab = ft_strjoinplus(tab, check_line_tab(data, line), 3);
 	tab = ft_strjoinplus(tab, check_line_tab(data, line), 3);
+	//printf("RES=%s\n", tab);
 	close(fd);
 	ft_line_to_tab(tab, data);
 	init_data_map(data);

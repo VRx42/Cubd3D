@@ -22,7 +22,7 @@ int    init_color(t_data *data, char *line)
     if (line[1] != ' ')
     {
         ft_strdel(&line);
-        ft_display_error(data, "Params wrong for color");
+        ft_display_error(data, "Params wrong for color(1)");
     }
     while (line[i])
     {
@@ -30,7 +30,7 @@ int    init_color(t_data *data, char *line)
         if (!ft_isdigit(line[i]) && line[i] != ' ')
         {
             ft_strdel(&line);
-            ft_display_error(data, "Params wrong for color");
+            ft_display_error(data, "Params wrong for color(2)");
         }
         i++;
     }
@@ -42,7 +42,7 @@ int    init_color(t_data *data, char *line)
     if (line[i] || !true)
     {
         ft_strdel(&line);
-        ft_display_error(data, "Params wrong for color");
+        ft_display_error(data, "Params wrong for color(3)");
     }
 	return (ft_atoi(line + 1));
 }

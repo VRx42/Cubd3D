@@ -4,10 +4,10 @@ SO ./textures/rainbow.xpm
 WE ./textures/tiger.xpm
 EA ./textures/wall.xpm
 S ./textures/cactus.xpm
-C 16750
+C 167500
 F 167500
-1111111
-1000001
-1S22001
-1000001
-1111111
+11111111
+12000001
+100N0001
+10000021
+11111111
