@@ -40,7 +40,7 @@ void   init_resolution(t_data *data, char *line)
         if (!ft_isdigit(line[i]) && line[i] != ' ')
         {
             ft_strdel(&line);
-            ft_display_error(data, "Params wrong for resolution");
+            ft_display_error(data, "Other than digit for resolution");
         }
         i++;
     }
@@ -58,7 +58,7 @@ void   init_resolution(t_data *data, char *line)
     if (line[i])
     {
         ft_strdel(&line);
-        ft_display_error(data, "Params wrong for resolution");
+        ft_display_error(data, "More than two params for resolution");
     }
     correct_wd_size(data, line); 
 }

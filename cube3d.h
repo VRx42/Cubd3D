@@ -32,8 +32,8 @@
 # define K_D 100
 # define K_ARRL 65361
 # define K_ARRR 65363
-# define SPW 0.15
-# define SPT 0.15
+# define SPW 0.20
+# define SPT 0.20
 
 typedef struct	s_txt
 {
