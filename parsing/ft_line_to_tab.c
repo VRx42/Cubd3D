@@ -24,7 +24,7 @@ char *complete_line(char *str, int w)
 		space = ft_strnew(w - (int)ft_strlen(str));
 		while (i < w - (int)ft_strlen(str))
 		{
-			space[i] = ' ';
+			space[i] = '1';
 			i++;
 		}
 		return (ft_strjoinplus(str, space, 3));

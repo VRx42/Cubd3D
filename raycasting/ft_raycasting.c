@@ -27,7 +27,7 @@ static void	ft_draw_img(t_clc *clc, t_data *data, t_txt *txt, t_img *img)
 	while (y < data->wd_h)
 	{
 		if (y < drawst)
-			img->data[y * data->wd_w + clc->x] = 16778900;
+			img->data[y * data->wd_w + clc->x] = data->list.ceiling;
 		if (y >= drawst && y < drawend)
 		{
 			yt = (y * 2 - data->wd_h + clc->hline) * (txt->height / 2) \
@@ -36,7 +36,7 @@ static void	ft_draw_img(t_clc *clc, t_data *data, t_txt *txt, t_img *img)
 			clc->xt];
 		}
 		if (y > drawend)
-			img->data[y * data->wd_w + clc->x] = 16737400;
+			img->data[y * data->wd_w + clc->x] = data->list.floor;
 		y++;
 	}
 }

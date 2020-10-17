@@ -1,13 +1,13 @@
 R 800 800
 NO ./textures/metal.xpm
-SO ./textures/rainbow.xpm
-WE ./textures/tiger.xpm
-EA ./textures/wall.xpm
+SO ./textures/wall.xpm
+WE ./textures/stone.xpm
+EA ./textures/rainbow.xpm
 S ./textures/cactus.xpm
-C 167500
-F 167500
-11111111
-12000001
-100N0001
-10000021
-11111111
+C 010,150,000
+F 255,20,100
+   11111111111
+ 1112000011
+ 100N00011111
+1000000111
+11111111111

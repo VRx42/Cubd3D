@@ -12,12 +12,32 @@
 
 #include "../cube3d.h"
 
-int    init_color(t_data *data, char *line)
+int rgb_to_int(char *str)
+{
+    int r;
+    int g;
+    int b;
+    int i;
+    int total;
+
+    i = 0;
+    r = ft_atoi(str);
+    while (str[i] != ',')
+        i++;
+    g = ft_atoi(str + i + 1);
+    i = i + 1;
+     while (str[i] != ',')
+        i++;
+    b = ft_atoi(str + i + 1);
+    total = 256 * 256 * r + 256 * g + b;
+    return (total);
+}
+
+int init_color(t_data *data, char *line)
 {
     int i;
-    int true;
+    int n;
 
-    true = 0;
     i = 2;
     if (line[1] != ' ')
     {
@@ -26,23 +46,13 @@ int    init_color(t_data *data, char *line)
     }
     while (line[i])
     {
-        ft_isdigit(line[i]) || true ? true = 1 : 0;
-        if (!ft_isdigit(line[i]) && line[i] != ' ')
+        if (!ft_isdigit(line[i]) && line[i] != ' ' && line[i] != ',')
         {
             ft_strdel(&line);
             ft_display_error(data, "Params wrong for color(2)");
         }
         i++;
     }
-    i = 1;
-    while (line[i] == ' ')
-        i++;
-    while (ft_isdigit(line[i]))
-        i++;
-    if (line[i] || !true)
-    {
-        ft_strdel(&line);
-        ft_display_error(data, "Params wrong for color(3)");
-    }
-	return (ft_atoi(line + 1));
+    n = rgb_to_int(line + 1);
+	return (n);
 }

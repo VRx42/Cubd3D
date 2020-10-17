@@ -1,11 +1,11 @@
-R 600 400
+R 800 800
 NO ./textures/metal.xpm
-SO ./textures/rainbow.xpm
-WE ./textures/tiger.xpm
-EA ./textures/wall.xpm
-S ./textures/catus.xpm
-C 16747640
-F 16737400
+SO ./textures/wall.xpm
+WE ./textures/stone.xpm
+EA ./textures/rainbow.xpm
+S ./textures/cactus.xpm
+C 010,150,000
+F 255,20,100
 111111111100
 10000S000001
 100000000001
