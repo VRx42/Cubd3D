@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_exit_cube.c                                      :+:      :+:    :+:   */
+/*   ft_exit_cube.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vronchin <vronchin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 #include "../cube3d.h"
 
-void	 ft_exit_cube(t_data *data)
+void	ft_exit_cube(t_data *data)
 {
 	if (data->window)
 		mlx_destroy_window(data->mlx, data->window);

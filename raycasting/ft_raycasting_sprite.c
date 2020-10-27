@@ -9,100 +9,101 @@
 /*   Updated: 2020/08/25 12:55:30 by vronchin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "cube3d.h"
 
-static  void sort_sprite(t_data *data, t_sprite *tab_sprite)
+static	void	sort_sprite(t_data *data, t_sprite *tab_sprite)
 {
-    t_sprite tmp;
-    double dista;
-    double distb;
-    int i;
+	t_sprite	tmp;
+	double		dista;
+	double		distb;
+	int			i;
 
-    i = 0;
-    while (i < data->nbsprite - 1)
-    {
-        dista = ((data->posx - tab_sprite[i].x) * \
-        (data->posx - tab_sprite[i].x) + (data->posy - tab_sprite[i].y) \
-        * (data->posy - tab_sprite[i].y));
-        distb = dista = ((data->posx - tab_sprite[i + 1].x) * \
-        (data->posx - tab_sprite[i + 1].x) + (data->posy - tab_sprite[i+ 1].y)\
-        * (data->posy - tab_sprite[i + 1].y));
-        if (dista < distb)
-        {
-            tmp = tab_sprite[i];
-            tab_sprite[i] = tab_sprite[i + 1];
-            tab_sprite[i + 1] = tmp;
-            i = 0;
-        }
-        i++;
-    }
+	i = 0;
+	while (i < data->nbsprite - 1)
+	{
+		dista = ((data->posx - tab_sprite[i].x) * \
+		(data->posx - tab_sprite[i].x) + (data->posy - tab_sprite[i].y) \
+		* (data->posy - tab_sprite[i].y));
+		distb = ((data->posx - tab_sprite[i + 1].x) * \
+		(data->posx - tab_sprite[i + 1].x) + (data->posy - tab_sprite[i + 1].y)\
+		* (data->posy - tab_sprite[i + 1].y));
+		if (dista < distb)
+		{
+			tmp = tab_sprite[i];
+			tab_sprite[i] = tab_sprite[i + 1];
+			tab_sprite[i + 1] = tmp;
+			i = 0;
+		}
+		i++;
+	}
 }
 
-void    ft_raycasting_sprite(t_data *data, t_sprite *tab_sprite, t_txt txtsp, \
-double *zbuffer)
+int				get_startx(int sp_w, int sp)
 {
-    int i;
-    int stripe;
-    double spx;
-    double spy;
-    double invdet;
-    double transx;
-    double transy;
-    int spscreen;
-    int sp_h;
-    int sp_w;
-    int starty;
-    int endy;
-    int startx;
-    int endx;
-    int yt;
-    int xt;
-    int y;
-    int d;
+	int startx;
 
-    i = 0;
-    sort_sprite(data, tab_sprite);
-    while (i < data->nbsprite)
-    {
-        spx = tab_sprite[i].x - data->posx;
-        spy = tab_sprite[i].y - data->posy;
-        invdet = 1.0 / (data->planex * data->diry - data->dirx * data->planey);
-        transx = invdet * (data->diry * spx - data->dirx * spy);
-        transy = invdet * (-data->planey * spx + data->planex * spy);
-        spscreen = (int)((data->wd_w / 2) * (1 + transx / transy));
-        sp_h = abs((int)(data->wd_h / (transy)));
-        starty = -sp_h / 2 + data->wd_h / 2;
-        if(starty < 0)
-            starty = 0;
-        endy = sp_h / 2 + data->wd_h / 2;
-        if(endy >= data->wd_h)
-            endy = data->wd_h;
-        sp_w = abs((int)(data->wd_h / (transy)));
-        startx = -sp_w / 2 + spscreen;
-        if (startx < 0)
-            startx = 0;
-        endx = sp_w / 2 + spscreen;
-        if(endx >= data->wd_w)
-            endx = data->wd_w;
-        stripe = startx;
-        while (stripe < endx)
-        {
-            xt = (int)(256 * (stripe - (-sp_w / 2 + spscreen)) * txtsp.width /\
-            sp_w) / 256;
-            y = starty;
-            if(transy > 0 && stripe > 0 && stripe < data->wd_w && transy < zbuffer[stripe])
-            {
-                while(y < endy)
-                {
-                    d = (y) * 256 - data->wd_h * 128 + sp_h * 128;
-                    yt = ((d * txtsp.height) / sp_h) / 256;
-                    if (txtsp.data[yt * txtsp.width + xt] != 0)
-                        data->img.data[y * data->wd_w - 1 + stripe] = txtsp.data[yt * txtsp.width + xt];
-                    y++;
-                }
-            }
-            stripe++;
-        }
-        i++;
-    }
+	startx = -sp_w / 2 + sp;
+	if (startx < 0)
+		startx = 0;
+	return (startx);
+}
+
+int				get_endx(int sp_w, int sp, t_data *data)
+{
+	int endx;
+
+	endx = sp_w / 2 + sp;
+	if (endx >= data->wd_w)
+		endx = data->wd_w;
+	return (endx);
+}
+
+void			ft_sprite_display(double ty, t_data *data, t_txt txtsp, int s)
+{
+	int	yt;
+	int	xt;
+	int	y;
+	int sp_h;
+
+	sp_h = abs((int)(data->wd_h / (ty)));
+	xt = (int)(256 * (s - (-data->sp_w / 2 + data->sp)) * txtsp.width \
+	/ data->sp_w) / 256;
+	y = fmax(-sp_h / 2 + data->wd_h / 2, 0);
+	while (y < get_endy(sp_h, data))
+	{
+		yt = get_yt(data, y, sp_h, txtsp);
+		if (txtsp.data[yt * txtsp.width + xt] != 0)
+			data->img.data[y * data->wd_w - 1 + s] = \
+			txtsp.data[yt * txtsp.width + xt];
+		y++;
+	}
+}
+
+void			ft_raycasting_sprite(t_data *data, t_sprite *tab_sprite, \
+t_txt txtsp, double *zbuf)
+{
+	int		i;
+	int		s;
+	double	ty;
+
+	i = 0;
+	sort_sprite(data, tab_sprite);
+	while (i < data->nbsprite)
+	{
+		ty = get_ty(data, tab_sprite, i);
+		data->sp = (int)((data->wd_w / 2) *\
+		(1 + get_tx(data, tab_sprite, i) / ty));
+		data->sp_w = abs((int)(data->wd_h / (ty)));
+		s = get_startx(data->sp_w, data->sp);
+		while (s < get_endx(data->sp_w, data->sp, data))
+		{
+			if (ty > 0 && s > 0 && s < data->wd_w && ty < zbuf[s])
+			{
+				ft_sprite_display(ty, data, txtsp, s);
+			}
+			s++;
+		}
+		i++;
+	}
 }

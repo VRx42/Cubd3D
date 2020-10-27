@@ -12,7 +12,7 @@
 
 #include "../cube3d.h"
 
-static	char *check_line_tab(t_data *data, char *line)
+static char	*check_line_tab(t_data *data, char *line)
 {
 	int i;
 
@@ -33,7 +33,7 @@ static	char *check_line_tab(t_data *data, char *line)
 	return (line);
 }
 
-static void info_exist(t_data *data, char *line, int ret)
+static void	info_exist(t_data *data, char *line, int ret)
 {
 	if (data->wd_h == 0 || !data->list.north.id || !data->list.south.id \
 	|| !data->list.west.id || !data->list.east.id || data->list.floor == -1 \
@@ -44,7 +44,7 @@ static void info_exist(t_data *data, char *line, int ret)
 	}
 }
 
-static int check_line(t_data *data, char *line)
+static int	check_line(t_data *data, char *line)
 {
 	if (line[0] == 'R')
 		init_resolution(data, line);
@@ -63,7 +63,7 @@ static int check_line(t_data *data, char *line)
 	else if (line[0] == 'C')
 		data->list.ceiling = init_color(data, line);
 	else if (line && ft_strlen(line))
-		return(1);
+		return (1);
 	return (0);
 }
 
@@ -81,7 +81,7 @@ void		ft_parsing_data(char *path, t_data *data)
 	while ((ret = get_next_line(fd, &line)))
 	{
 		if (check_line(data, line))
-			break;
+			break ;
 		ft_strdel(&line);
 	}
 	info_exist(data, line, ret);
@@ -89,7 +89,6 @@ void		ft_parsing_data(char *path, t_data *data)
 	while (get_next_line(fd, &line))
 		tab = ft_strjoinplus(tab, check_line_tab(data, line), 3);
 	tab = ft_strjoinplus(tab, check_line_tab(data, line), 3);
-	//printf("RES=%s\n", tab);
 	close(fd);
 	ft_line_to_tab(tab, data);
 	init_data_map(data);

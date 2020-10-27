@@ -12,10 +12,24 @@
 
 #include "../cube3d.h"
 
-char *complete_line(char *str, int w)
+char	*add_ones(char *str, int w)
 {
-	int i;
-	char *space;
+	int j;
+
+	j = 0;
+	while (j < w)
+	{
+		if (str[j] == ' ')
+			str[j] = '1';
+		j++;
+	}
+	return (str);
+}
+
+char	*complete_line(char *str, int w)
+{
+	int		i;
+	char	*space;
 
 	space = NULL;
 	i = 0;
@@ -29,10 +43,10 @@ char *complete_line(char *str, int w)
 		}
 		return (ft_strjoinplus(str, space, 3));
 	}
-	return (str);
+	return (add_ones(str, w));
 }
 
-void		ft_line_to_tab(char *line, t_data *data)
+void	ft_line_to_tab(char *line, t_data *data)
 {
 	int	i;
 	int	b;

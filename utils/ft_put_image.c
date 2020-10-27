@@ -20,6 +20,6 @@ void	ft_put_image(t_data *data)
 	ft_raycasting(data, &data->list, zbuffer);
 	if (data->nbsprite)
 		ft_raycasting_sprite(data, data->tab_sprite, data->list.sprite,\
-		 zbuffer);
+		zbuffer);
 	mlx_put_image_to_window(data->mlx, data->window, data->img.img_ptr, 0, 0);
 }

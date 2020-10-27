@@ -12,7 +12,7 @@
 
 #include "../cube3d.h"
 
-static void	ft_draw_img(t_clc *clc, t_data *data, t_txt *txt, t_img *img)
+static void		ft_draw_img(t_clc *clc, t_data *data, t_txt *txt, t_img *img)
 {
 	int	y;
 	int	yt;
@@ -41,7 +41,7 @@ static void	ft_draw_img(t_clc *clc, t_data *data, t_txt *txt, t_img *img)
 	}
 }
 
-static void	ft_calcul_text(t_clc *clc, t_data *data, t_txt *txt)
+static	void	ft_calcul_text(t_clc *clc, t_data *data, t_txt *txt)
 {
 	if (clc->side < 0)
 		clc->wallx = data->posx + ((clc->mapy - data->posy + \
@@ -58,7 +58,27 @@ static void	ft_calcul_text(t_clc *clc, t_data *data, t_txt *txt)
 	ft_draw_img(clc, data, txt, &data->img);
 }
 
-void	ft_raycasting(t_data *data, t_alltxt *list, double *zbuffer)
+void			ft_bmp_case(t_data *data)
+{
+	if (data->save)
+	{
+		ft_bmp(data);
+		free(data->tab_sprite);
+		ft_exit_cube(data);
+	}
+}
+
+void			ft_perpwall(t_clc *clc, t_data *data)
+{
+	if (clc->side > 0)
+		clc->perpwalldist = fabs((clc->mapx - data->posx \
+		+ (1 - clc->stepx) / 2) / clc->dirx);
+	else
+		clc->perpwalldist = fabs((clc->mapy - data->posy \
+		+ (1 - clc->stepy) / 2) / clc->diry);
+}
+
+void			ft_raycasting(t_data *data, t_alltxt *list, double *zbuffer)
 {
 	t_clc		clc;
 
@@ -72,10 +92,7 @@ void	ft_raycasting(t_data *data, t_alltxt *list, double *zbuffer)
 		clc.mapy = (int)data->posy;
 		ft_calcul_vec_dist(&clc, data);
 		ft_calcul_wall(&clc, data);
-		if (clc.side > 0)
-			clc.perpwalldist = fabs((clc.mapx - data->posx + (1 - clc.stepx) / 2) / clc.dirx);
-		else
-			clc.perpwalldist = fabs((clc.mapy - data->posy + (1 - clc.stepy) / 2) / clc.diry);
+		ft_perpwall(&clc, data);
 		if (clc.side == NORTH)
 			ft_calcul_text(&clc, data, &list->north);
 		if (clc.side == SOUTH)
@@ -87,4 +104,5 @@ void	ft_raycasting(t_data *data, t_alltxt *list, double *zbuffer)
 		zbuffer[clc.x] = clc.perpwalldist;
 		clc.x++;
 	}
+	ft_bmp_case(data);
 }

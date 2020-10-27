@@ -53,7 +53,8 @@ LIBFT =	ft_atoi.c \
 		ft_strncpy.c \
 		ft_strndup.c \
 		ft_strnew.c \
-		get_next_line.c
+		get_next_line.c \
+		ft_strcmp.c
 
 PARSING = ft_line_to_tab.c \
 			   ft_parsing_data.c
@@ -61,7 +62,9 @@ PARSING = ft_line_to_tab.c \
 RAYCASTING = ft_calcul_vec_dist.c \
 			 ft_calcul_wall.c \
 			 ft_raycasting_sprite.c \
-			 ft_raycasting.c
+			 ft_raycasting.c \
+			 utils_raycasting.c \
+			 ft_bmp.c
 
 UTILS = ft_display_error.c \
 	   ft_exit_cube.c \

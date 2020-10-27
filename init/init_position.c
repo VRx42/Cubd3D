@@ -12,15 +12,20 @@
 
 #include "../cube3d.h"
 
-void    init_position(char p, int x, int y, t_data *data)
+void	init_position_check(int x, int y, t_data *data)
 {
 	if (data->posx != 0 || data->posy != 0)
 		ft_display_error(data, "Starting position already set");
-    if (x == 0 || y == 0 || x == data->map_w \
-	|| y == data->map_h)
+	if (x == 0 || y == 0 || x == data->map_w \
+		|| y == data->map_h)
 		ft_display_error(data, "Player position wrong");
 	data->posx = x + 0.5;
 	data->posy = y + 0.5;
+}
+
+void	init_position(char p, int x, int y, t_data *data)
+{
+	init_position_check(x, y, data);
 	if (p == 'S')
 	{
 		data->dirx = 1;

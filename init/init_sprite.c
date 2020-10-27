@@ -12,32 +12,37 @@
 
 #include "../cube3d.h"
 
-void    init_sprite(t_data *data)
+void	if_sprite_exists(int i, int y, int x, t_data *data)
 {
-    int y;
-    int x;
-    int i;
+	data->tab_sprite[i].x = x + 0.5;
+	data->tab_sprite[i].y = y + 0.5;
+}
 
-    i = 0;
-    y = 0;
-    x = 0;
-    if (data->nbsprite)
-    {
-        data->tab_sprite = ft_calloc(data->nbsprite, sizeof(t_sprite));
-        while (x < data->map_h)
-        {
-            while (data->map[x][y])
-            {
-                if (data->map[x][y] == '2')
-                {
-                    data->tab_sprite[i].x = x + 0.5;
-                    data->tab_sprite[i].y = y + 0.5;
-                    i++;
-                }
-                y++;
-            }
-            y = 0;
-            x++;
-        }
-    }
+void	init_sprite(t_data *data)
+{
+	int y;
+	int x;
+	int i;
+
+	i = 0;
+	y = 0;
+	x = 0;
+	if (data->nbsprite)
+	{
+		data->tab_sprite = ft_calloc(data->nbsprite, sizeof(t_sprite));
+		while (x < data->map_h)
+		{
+			while (data->map[x][y])
+			{
+				if (data->map[x][y] == '2')
+				{
+					if_sprite_exists(i, x, y, data);
+					i++;
+				}
+				y++;
+			}
+			y = 0;
+			x++;
+		}
+	}
 }

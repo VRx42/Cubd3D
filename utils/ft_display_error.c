@@ -12,10 +12,10 @@
 
 #include "../cube3d.h"
 
-void    ft_display_error(t_data *data, char *s)
+void	ft_display_error(t_data *data, char *s)
 {
-    write(2, "Error encountered : ", 20);
-    write(2, s, ft_strlen(s));
-    write(2, "\n", 1);
-    ft_exit_cube(data);
+	write(2, "Error encountered : ", 20);
+	write(2, s, ft_strlen(s));
+	write(2, "\n", 1);
+	ft_exit_cube(data);
 }
